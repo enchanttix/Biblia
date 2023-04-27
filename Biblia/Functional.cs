@@ -99,5 +99,10 @@ namespace Biblia
             excelApp.Quit();
             Marshal.FinalReleaseComObject(excelApp);
         }
+
+        public void addingNewEntry()
+        {
+
+        }
     }
 }
