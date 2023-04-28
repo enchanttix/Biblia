@@ -29,6 +29,7 @@ namespace Biblia
                         fun.bookList();
                         break;
                     case 3:
+                        fun.addingNewEntry();
                         break;
                     case 4:
                         fun.returnMarkBook();

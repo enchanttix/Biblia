@@ -47,7 +47,7 @@ namespace Biblia
             Marshal.FinalReleaseComObject(excelApp);
         }
 
-        public void bookList() 
+        public void bookList()//вывод книг
         {
             Range excelRange = fileAccess(2);
             rowCount = excelRange.Rows.Count;
@@ -71,7 +71,7 @@ namespace Biblia
             excelApp.Quit();
             Marshal.FinalReleaseComObject(excelApp);
         }
-        public void returnMarkBook()
+        public void returnMarkBook()//запись о возврате
         {
             Range excelRange = fileAccess(1);
             rowCount = excelRange.Rows.Count;
@@ -100,9 +100,37 @@ namespace Biblia
             Marshal.FinalReleaseComObject(excelApp);
         }
 
-        public void addingNewEntry()
+        public void addingNewEntry()//новая запись о взятии книг
         {
-
+            Range excelRange = fileAccess(1);
+            rowCount = excelRange.Rows.Count;
+            colCount = excelRange.Columns.Count;
+            for (int i = 1; i < colCount-1; i++)
+            {
+                switch(i)
+                {
+                    case 1:                        
+                            Console.WriteLine("Введите фамилию библиотекаря");
+                            break;                       
+                    case 2:                       
+                            Console.WriteLine("Введите ФИО читателя");
+                            break;                       
+                    case 3:                        
+                            Console.WriteLine("Введите название книги");
+                            break ;                      
+                    case 4:                       
+                            Console.WriteLine("Введите автора");
+                            break;                        
+                    case 5:                        
+                            Console.WriteLine("Введите дату взятия (пример: 10 10 2010)");
+                            break;                                          
+                        
+                }
+                excelRange.Cells[rowCount+1, i] = Console.ReadLine();
+            }
+            excelApp.Save(@"C:\Users\СмердоваЕВ\source\repos\Biblia\list.xlsx");
+            excelApp.Quit();
+            Marshal.FinalReleaseComObject(excelApp);
         }
     }
 }
